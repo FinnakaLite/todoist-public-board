@@ -30,11 +30,13 @@ const App = () => {
   // Fetch all tasks in the project
   const fetchTasks = async () => {
     try {
-      const response = await axios.get(`${API_URL}/tasks`, {
-        params: { project_id: PROJECT_ID },
-        headers: { Authorization: `Bearer ${API_TOKEN}` },
+      const response = await fetch("/api/todoist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "fetch" }),
       });
-      setTasks(response.data);
+      const data = await response.json();
+      setTasks(data);
     } catch (error) {
       console.error("Error fetching tasks:", error);
     }

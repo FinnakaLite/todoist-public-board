@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import './App.css'; // Import the CSS file
 
-const API_TOKEN = "TOKEN"; // Replace with your Todoist API token
-const PROJECT_ID = "PROJECT_ID"; // Replace with your Todoist project ID
+const API_TOKEN = process.env.REACT_APP_TODOIST_API_TOKEN;
+const PROJECT_ID = process.env.REACT_APP_PROJECT_ID;
 const API_URL = "https://api.todoist.com/rest/v2";
 
 // Predefined tags with colors
